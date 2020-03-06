@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mxu"
-version = "0.0.1"
+version = "0.0.6"
 description = "A collection of utilities and helpers for writing Python programs."
 authors = [
     "Maximilian Köhl <mkoehl@cs.uni-saarland.de>"

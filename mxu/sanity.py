@@ -28,7 +28,7 @@ def check_singledispatch(
     error: bool = False,
     recursive: bool = True,
     ignore: t.AbstractSet[type] = frozenset(),
-) -> None:
+) -> bool:
     if not hasattr(function, "registry") or not hasattr(
         function.registry, "keys"  # type:ignore
     ):
@@ -51,6 +51,7 @@ def check_singledispatch(
             raise NoImplementationError(msg)
         else:
             warnings.warn(NoImplementationWarning(msg))
+    return True
 
 
 class NoEntryError(Exception):
@@ -69,7 +70,7 @@ def check_enum_map(
     mapping: t.Mapping[EnumType, t.Any],
     *,
     error: bool = False,
-) -> None:
+) -> bool:
     for entry in enum_typ:
         if entry in mapping:
             continue
@@ -78,3 +79,4 @@ def check_enum_map(
             raise NoEntryError(msg)
         else:
             warnings.warn(NoEntryWarning(msg))
+    return True
